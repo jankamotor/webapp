@@ -8,6 +8,7 @@ pipeline {
             steps {
                 echo 'Installing APP Dependencies...'
                 sh 'npm install'
+                sh 'npm install -D sonarqube-scanner'
             }
         }
         stage('Execute Unit Test...') {
