@@ -15,6 +15,11 @@ pipeline {
                 echo 'Running Unit Test... npm test'
             }
         }
+        stage('Execute Sonar Scanner...') {
+            steps {
+                sh 'npm run sonar'
+            }
+        }
         stage('Build Application...') {
             steps {
                 echo 'Building Application...'
