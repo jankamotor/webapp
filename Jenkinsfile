@@ -42,7 +42,7 @@ pipeline {
             }
             steps {
                 echo 'Compressing Application...'
-                sh 'cd /home/administrator/proyects/angular_app/webapp/workspace/angular_app_main/dist/web_angular'
+                sh 'cd /home/administrator/proyects/angular_app/webapp/workspace/angular_app_main/dist/web_angular/'
                 sh 'zip application.zip *.*'
             }
         }
