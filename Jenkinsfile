@@ -35,7 +35,7 @@ pipeline {
             steps {
                 echo 'Building Application...'
                 sh 'ng build'
-            }
+        }   }
         stage('Compressing Application Files...') {
             agent {
                 label 'node_dev1'
@@ -54,5 +54,6 @@ pipeline {
                 echo 'Building Application...'
                 sh 'sshpass -p G@p53rv3r scp application.zip administrator@172.16.1.111:/home/administrator/proyects/angular_ci-cd/src'
             }
+        }
     }
 }
