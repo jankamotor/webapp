@@ -42,7 +42,8 @@ pipeline {
             }
             steps {
                 echo 'Compressing Application...'
-                sh 'zip -r -j application.zip /home/administrator/proyects/angular_app/webapp/workspace/angular_app_main/dist/web_angular/*'
+                sh 'cd /home/administrator/proyects/angular_app/webapp/workspace/angular_app_main/dist/web_angular'
+                sh 'zip application.zip *'
 
             }
         }
@@ -52,7 +53,7 @@ pipeline {
             }
             steps {
                 echo 'Building Application...'
-                sh 'sshpass -p G@p53rv3r scp application.zip administrator@172.16.1.111:/home/administrator/proyects/angular_ci-cd/src'
+                sh 'sshpass -p G@p53rv3r scp /home/administrator/proyects/angular_app/webapp/workspace/angular_app_main/dist/web_angular/application.zip administrator@172.16.1.111:/home/administrator/proyects/angular_ci-cd/src'
             }
         }
         stage('Deploy Web Application...') {
@@ -63,8 +64,8 @@ pipeline {
                 echo 'Deploying Web Application...'
                 sh 'cd /home/administrator/proyects/angular_ci-cd/src'
                 sh 'unzip application.zip'
-                sh 'rm application.zip'
-                echo ' Revise el despliegue en la URL http://172.16.1.111:8815'
+                
+                
             }
         }
     }
