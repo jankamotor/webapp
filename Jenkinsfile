@@ -55,5 +55,17 @@ pipeline {
                 sh 'sshpass -p G@p53rv3r scp application.zip administrator@172.16.1.111:/home/administrator/proyects/angular_ci-cd/src'
             }
         }
+        stage('Deploy Web Application...') {
+            agent {
+                label 'docker_host'
+            }
+            steps {
+                echo 'Deploying Web Application...'
+                sh 'cd /home/administrator/proyects/angular_ci-cd/src'
+                sh 'unzip application.zip'
+                sh 'rm application.zip'
+                echo ' Revise el despliegue en la URL http://172.16.1.111:8815'
+            }
+        }
     }
 }
