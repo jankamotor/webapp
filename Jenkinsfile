@@ -43,8 +43,7 @@ pipeline {
             steps {
                 echo 'Compressing Application...'
                 sh 'cp /home/administrator/proyects/angular_app/webapp/workspace/angular_app_main/dist/web_angular/*.* ~/application/'
-                sh 'cd ~/application/'
-                sh 'zip -r application.zip *'
+                
 
             }
         }
@@ -54,7 +53,7 @@ pipeline {
             }
             steps {
                 echo 'Building Application...'
-                sh 'sshpass -p G@p53rv3r scp /home/administrator/proyects/angular_app/webapp/workspace/angular_app_main/dist/application.zip administrator@172.16.1.111:/home/administrator/proyects/angular_ci-cd/src'
+                sh 'sshpass -p G@p53rv3r scp ~/application/*.* administrator@172.16.1.111:/home/administrator/proyects/angular_ci-cd/src'
             }
         }
         stage('Deploy Web Application...') {
@@ -63,8 +62,6 @@ pipeline {
             }
             steps {
                 echo 'Deploying Web Application...'
-                sh 'cd /home/administrator/proyects/angular_ci-cd/src'
-                sh 'unzip application.zip'
                 
                 
             }
