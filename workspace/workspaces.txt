@@ -1,0 +1,8 @@
+angular_app/dev
+angular_app_dev
+angular_app/main
+angular_app_main
+angular_app/qa
+angular_app_qa
+webstatic aws s3/main
+webstatic_aws_s3_main
