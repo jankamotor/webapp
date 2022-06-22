@@ -53,7 +53,7 @@ pipeline {
             steps {
                 //echo 'Compressing Application Files...'
                 sh 'cp /home/administrator/proyects/angular_app/webapp/workspace/angular_app_main/dist/web_angular/*.* ~/application/'
-                sh 'tar cvjf application.tar.bz2 ~/application/'
+                sh 'tar cvjf application.tar.bz2 /home/administrator/application/*.*'
             }
         }
         stage('Copying artifacts to Docker Host Container...') {
