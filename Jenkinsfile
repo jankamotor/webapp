@@ -71,7 +71,7 @@ pipeline {
                 label 'docker_host'
             }
             steps {
-                sh 'scp administrator@172.16.1.108:~/application/*.* /home/administrator/proyects/angular_ci-cd/src'
+                sh 'sshpass -p G@p53rv3r scp administrator@172.16.1.108:~/application/*.* /home/administrator/proyects/angular_ci-cd/src'
                   
             }
         }
