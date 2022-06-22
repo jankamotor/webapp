@@ -2,22 +2,31 @@ pipeline {
     agent none
 
     stages {
-        stage('Install Dependencies...') {
+        stage('Installing Dependencies...') {
             agent {
                 label 'node_dev1'
             }
             steps {
-                echo 'Installing APP Dependencies...'
+                //echo 'Installing APP Dependencies...'
                 sh 'npm install'
                 sh 'npm install -D sonarqube-scanner'
             }
         }
-        stage('Execute Unit Test...') {
+        stage('Executing Lint Test...') {
             agent {
                 label 'node_dev1'
             }
             steps {
-                echo 'Running Unit Test... npm test'
+                //echo 'Running Unit Test... npm test'
+                sh 'npm run lint'
+            }
+        }
+        stage('Executing Unit Test...') {
+            agent {
+                label 'node_dev1'
+            }
+            steps {
+                //echo 'Running Unit Test... npm test'
                 sh 'npm run test'
             }
         }
@@ -42,10 +51,10 @@ pipeline {
                 label 'node_dev1'
             }
             steps {
-                echo 'Compressing Application...'
-                sh 'cp /home/administrator/proyects/angular_app/webapp/workspace/angular_app_main/dist/web_angular/*.* ~/application/'
-                
-
+                //echo 'Compressing Application Files...'
+                //sh 'cp /home/administrator/proyects/angular_app/webapp/workspace/angular_app_main/dist/web_angular/*.* ~/application/'
+                sh 'cd /home/administrator/proyects/angular_app/webapp/workspace/angular_app_main/dist/web_angular/'
+                sh 'tar cvjf application.tar.bz2 *'
             }
         }
         stage('Copying artifacts to Docker Host Container...') {
